@@ -4,15 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_white"
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
 
-    <Button
-        android:id="@+id/buttonSingOut"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:onClick="singout"
-        android:text="singout" />
 </RelativeLayout>
