@@ -1,16 +1,23 @@
 package com.example.kotlinlearn
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button: Button
     private lateinit var toolbar: Toolbar
     private lateinit var auth: FirebaseAuth
+    private lateinit var imageGradientGray: ImageView
+    private lateinit var animation: Animation
+    private var isTrue = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +37,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         auth = FirebaseAuth.getInstance()
+        imageGradientGray = findViewById(R.id.imageBackGray)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setTitle(null)
+
 
     }
 
@@ -71,6 +84,21 @@ class MainActivity : AppCompatActivity() {
             android.R.id.home -> Toast.makeText(this, "Go back", Toast.LENGTH_SHORT).show()
         }
         return true
+    }
+
+    fun backGroudnd(view: View) {
+        if (isTrue == true){
+            animation = AnimationUtils.loadAnimation(this, R.anim.translate)
+            imageGradientGray.startAnimation(animation)
+            imageGradientGray.visibility = View.GONE
+            isTrue = false
+        }else {
+            animation = AnimationUtils.loadAnimation(this, R.anim.translate_vis)
+            imageGradientGray.visibility = View.VISIBLE
+            imageGradientGray.startAnimation(animation)
+            isTrue = true
+        }
+
     }
 
 }
