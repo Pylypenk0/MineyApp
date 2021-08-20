@@ -18,9 +18,14 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:itemCount="2"
+        tools:listitem="@layout/card_view_design"/>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="250dp"
@@ -28,5 +33,6 @@
         android:onClick="backGroudnd"
         android:layout_centerVertical="true"
         android:layout_height="250dp"
-        style="@style/YourCardView"/>
+        style="@style/YourCardView"
+        android:visibility="gone"/>
 </RelativeLayout>

@@ -18,6 +18,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
@@ -28,11 +30,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageGradientGray: ImageView
     private lateinit var animation: Animation
     private var isTrue = true
+    private lateinit var recyclerview: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        recyclerViewShow()
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -44,8 +49,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setTitle(null)
 
-
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.mav_menu, menu)
@@ -99,6 +105,16 @@ class MainActivity : AppCompatActivity() {
             imageGradientGray.startAnimation(animation)
             isTrue = true
         }
+
+    }
+    fun recyclerViewShow(){
+        recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        val data = ArrayList<ItemsViewModel>()
+        data.add(ItemsViewModel(R.drawable.ic_baseline_menu_24, "Hello!"))
+        data.add(ItemsViewModel(R.drawable.ic_baseline_menu_24, "Hello1!"))
+        val adapter = CustomAdapter(data)
+        recyclerview.adapter = adapter
 
     }
 
