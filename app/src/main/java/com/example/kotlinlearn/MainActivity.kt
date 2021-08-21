@@ -24,6 +24,7 @@ import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var button: Button
     private lateinit var toolbar: Toolbar
     private lateinit var auth: FirebaseAuth
