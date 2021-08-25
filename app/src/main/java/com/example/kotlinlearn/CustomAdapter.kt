@@ -36,6 +36,6 @@ class CustomAdapter (private val mList: List<ItemsViewModel>) : RecyclerView.Ada
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val textView: TextView = itemView.findViewById(R.id.textView)
+        var textView: TextView = itemView.findViewById(R.id.textView)
     }
 }

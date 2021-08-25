@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerViewShow()
+        //recyclerViewShow()
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -108,15 +108,13 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun recyclerViewShow(){
-        recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
-        recyclerview.layoutManager = LinearLayoutManager(this)
-        val data = ArrayList<ItemsViewModel>()
-        data.add(ItemsViewModel(R.drawable.ic_baseline_menu_24, "Hello!"))
-        data.add(ItemsViewModel(R.drawable.ic_baseline_menu_24, "Hello1!"))
-        val adapter = CustomAdapter(data)
-        recyclerview.adapter = adapter
-
-    }
+//    fun recyclerViewShow(){
+//        recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+//        recyclerview.layoutManager = LinearLayoutManager(this)
+//        val data = ArrayList<ItemsViewModel>()
+//        val adapter = CustomAdapter(data)
+//        recyclerview.adapter = adapter
+//
+//    }
 
 }
