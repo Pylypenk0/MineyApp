@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_white"
+    android:background="@color/white_background"
     tools:context=".MainActivity">
 
     <ImageView
@@ -12,20 +12,21 @@
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/toojbar_test"/>
+        android:background="@drawable/toojbar_test"
+        android:visibility="gone"/>
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
         tools:itemCount="2"
-        tools:listitem="@layout/card_view_design"/>
+        tools:listitem="@layout/card_view_design" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="250dp"
