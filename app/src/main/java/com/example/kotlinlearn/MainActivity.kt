@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -28,10 +29,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button: Button
     private lateinit var toolbar: Toolbar
     private lateinit var auth: FirebaseAuth
-    private lateinit var imageGradientGray: ImageView
+    private lateinit var imageBackGray: ImageView
     private lateinit var animation: Animation
     private var isTrue = true
     private lateinit var recyclerview: RecyclerView
+    private lateinit var cardViewAddMoney: CardView
+    private lateinit var cardViewOkMoney: CardView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +44,14 @@ class MainActivity : AppCompatActivity() {
 
         //recyclerViewShow()
 
+        cardViewAddMoney = findViewById(R.id.cardViewAddMoney)
+        cardViewOkMoney = findViewById(R.id.cardViewOkMoney)
+
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         auth = FirebaseAuth.getInstance()
-        imageGradientGray = findViewById(R.id.imageBackGray)
+        imageBackGray = findViewById(R.id.imageBackGray)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
@@ -89,25 +96,40 @@ class MainActivity : AppCompatActivity() {
                 alertDialog.show()
 
             }
+
             android.R.id.home -> Toast.makeText(this, "Go back", Toast.LENGTH_SHORT).show()
+
         }
         return true
     }
 
-    fun backGroudnd(view: View) {
+    fun backGround(view: View) {
         if (isTrue == true){
             animation = AnimationUtils.loadAnimation(this, R.anim.translate)
-            imageGradientGray.startAnimation(animation)
-            imageGradientGray.visibility = View.GONE
+            imageBackGray.startAnimation(animation)
+            imageBackGray.visibility = View.GONE
             isTrue = false
         }else {
             animation = AnimationUtils.loadAnimation(this, R.anim.translate_vis)
-            imageGradientGray.visibility = View.VISIBLE
-            imageGradientGray.startAnimation(animation)
+            imageBackGray.visibility = View.VISIBLE
+            imageBackGray.startAnimation(animation)
             isTrue = true
         }
 
     }
+
+    fun floatButtonAddMoney(view: View) {
+        imageBackGray.visibility = View.VISIBLE
+        cardViewAddMoney.visibility = View.GONE
+        cardViewOkMoney.visibility = View.VISIBLE
+    }
+    fun floatButtonOkMoney(view: View) {
+        imageBackGray.visibility = View.GONE
+        cardViewAddMoney.visibility = View.VISIBLE
+        cardViewOkMoney.visibility = View.GONE
+    }
+
+//    fun cardViewOkMoney(view: View) {}
 //    fun recyclerViewShow(){
 //        recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 //        recyclerview.layoutManager = LinearLayoutManager(this)
